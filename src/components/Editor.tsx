@@ -37,7 +37,7 @@ const Editor: React.FC<EditorProps> = ({ value, onChange, onScroll, isDarkMode }
       value={value}
       onChange={(e) => onChange(e.target.value)}
       onScroll={handleScroll}
-      className={`w-full h-full resize-none p-4 focus:outline-none font-mono ${
+      className={`w-full h-full resize-none pt-16 p-4 focus:outline-none font-mono ${
         isDarkMode
           ? 'bg-gray-900 text-gray-100'
           : 'bg-white text-gray-900'

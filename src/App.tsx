@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Split from 'react-split';
 import html2pdf from 'html2pdf.js';
 import Toolbar from './components/Toolbar';
