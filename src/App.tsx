@@ -8,7 +8,7 @@ import HelpModal from './components/HelpModal';
 import { EditorState } from './types';
 
 const STORAGE_KEY = 'markdown-editor-state';
-const INITIAL_CONTENT = `# Welcome to the Markdown Editor!
+const INITIAL_CONTENT = `# Welcome to the Markdown Editor (Made By Vikash Kumar)! 
 
 Start writing your content here. Use the toolbar above or keyboard shortcuts to format your text.
 
