@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Bold,
   Italic,
@@ -45,18 +45,38 @@ const Toolbar: React.FC<ToolbarProps> = ({
   isFocusMode,
 }) => {
   const tools = [
-    { icon: <Bold size={20} />, format: '**', tooltip: 'Bold (Ctrl+B)' },
-    { icon: <Italic size={20} />, format: '_', tooltip: 'Italic (Ctrl+I)' },
+    { icon: <Bold size={20} />, format: '**', tooltip: 'Bold' },
+    { icon: <Italic size={20} />, format: '_', tooltip: 'Italic' },
     { icon: <List size={20} />, format: '- ', tooltip: 'Bullet List' },
     { icon: <ListOrdered size={20} />, format: '1. ', tooltip: 'Numbered List' },
-    { icon: <Link size={20} />, format: '[](url)', tooltip: 'Link (Ctrl+K)' },
+    { icon: <Link size={20} />, format: '[](url)', tooltip: 'Link' },
     { icon: <Image size={20} />, format: '![](url)', tooltip: 'Image' },
     { icon: <Code size={20} />, format: '```\n\n```', tooltip: 'Code Block' },
     { icon: <Table size={20} />, format: '| Header | Header |\n| --- | --- |\n| Cell | Cell |', tooltip: 'Table' },
   ];
 
+  // Function to handle keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey ) {
+        if (e.key === 'z' || e.key === 'Z') {
+          if (canUndo) onUndo();
+        }
+        if (e.key === 'y' || e.key === 'Y') {
+          if (canRedo) onRedo();
+        }
+      }
+    };
+
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [canUndo, canRedo, onUndo, onRedo]);
+
   return (
-    <div className="flex items-center fixed top-0 left-0 w-full dark:bg-white space-x-2 p-2 border-b dark:border-gray-700">
+    <div className="flex items-center fixed top-0 left-0 w-full bg-white dark:bg-white space-x-2 p-2 border-b dark:border-gray-700">
       <div className="flex space-x-1">
         {tools.map((tool, index) => (
           <button

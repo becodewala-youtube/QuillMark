@@ -12,7 +12,7 @@ const Editor: React.FC<EditorProps> = ({ value, onChange, onScroll, isDarkMode }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab' && editorRef.current === document.activeElement) {
+      if (e.key === 'Tab' && editorRef.current && editorRef.current === document.activeElement) {
         e.preventDefault();
         const start = editorRef.current.selectionStart;
         const end = editorRef.current.selectionEnd;

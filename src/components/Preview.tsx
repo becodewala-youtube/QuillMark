@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
@@ -10,6 +10,16 @@ interface PreviewProps {
 
 const Preview: React.FC<PreviewProps> = ({ content, scrollInfo, isDarkMode }) => {
   const previewRef = useRef<HTMLDivElement>(null);
+  const [sanitizedHtml, setSanitizedHtml] = useState<string>('');
+
+  useEffect(() => {
+    const generateHtml = async () => {
+      const html = await marked(content); // assuming marked might be async
+      setSanitizedHtml(DOMPurify.sanitize(html));
+    };
+
+    generateHtml();
+  }, [content]);
 
   useEffect(() => {
     if (scrollInfo && previewRef.current) {
@@ -18,8 +28,6 @@ const Preview: React.FC<PreviewProps> = ({ content, scrollInfo, isDarkMode }) =>
       previewRef.current.scrollTop = scrollTarget;
     }
   }, [scrollInfo]);
-
-  const sanitizedHtml = DOMPurify.sanitize(marked(content));
 
   return (
     <div

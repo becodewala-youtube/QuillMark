@@ -73,7 +73,7 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
           <section>
             <h3 className="font-bold mb-2">Code</h3>
             <code className="block bg-gray-100 dark:bg-gray-900 p-2 rounded mb-2">
-              `inline code`
+              
               ```
               code block
               ```
@@ -83,9 +83,7 @@ const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
           <section>
             <h3 className="font-bold mb-2">Keyboard Shortcuts</h3>
             <ul className="list-disc list-inside">
-              <li><kbd>Ctrl</kbd> + <kbd>B</kbd> - Bold</li>
-              <li><kbd>Ctrl</kbd> + <kbd>I</kbd> - Italic</li>
-              <li><kbd>Ctrl</kbd> + <kbd>K</kbd> - Link</li>
+              
               <li><kbd>Ctrl</kbd> + <kbd>Z</kbd> - Undo</li>
               <li><kbd>Ctrl</kbd> + <kbd>Y</kbd> - Redo</li>
             </ul>

@@ -74,7 +74,7 @@ function App() {
     
     let newContent = text;
     if (start === end) {
-      newContent = text.substring(0, start) + format + text.substring(end);
+      newContent = text.substring(0, start) + format + text.substring(end) ;
     } else {
       const selected = text.substring(start, end);
       if (format === '**' || format === '_') {
